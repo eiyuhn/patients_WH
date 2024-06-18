@@ -38,13 +38,22 @@ const InPatients = () => {
 
   const handleClickOpen = (patient) => {
     setSelectedPatient(patient);
-    setFormData(patient);
+    setFormData({ ...patient }); // Copy patient data into formData for editing
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
     setSelectedPatient(null);
+    setFormData({
+      patient_num: '',
+      appointment_num: '',
+      bed_num: '',
+      duration_of_stay: '',
+      date_leave: '',
+      actual_leave: '',
+      ward_id: ''
+    }); // Clear formData when closing the dialog
   };
 
   const handleChange = (e) => {
@@ -72,6 +81,10 @@ const InPatients = () => {
     }
   };
 
+  const handleRowClick = (patient) => {
+    handleClickOpen(patient);
+  };
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '90%', ml: '60px' }}>
       <Box sx={{ flexGrow: 1, p: 3, width: '100%' }}>
@@ -85,12 +98,11 @@ const InPatients = () => {
               <th>Date Leave</th>
               <th>Actual Leave</th>
               <th>Ward ID</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {inPatients.map((patient) => (
-              <tr key={patient.patient_num}>
+              <tr key={patient.patient_num} style={{ cursor: 'pointer', backgroundColor: selectedPatient && selectedPatient.patient_num === patient.patient_num ? '#e0f7fa' : 'transparent' }} onClick={() => handleRowClick(patient)}>
                 <td>{patient.patient_num}</td>
                 <td>{patient.appointment_num}</td>
                 <td>{patient.bed_num}</td>
@@ -98,11 +110,6 @@ const InPatients = () => {
                 <td>{patient.date_leave}</td>
                 <td>{patient.actual_leave}</td>
                 <td>{patient.ward_id}</td>
-                <td>
-                  <Button variant="contained" color="primary" onClick={() => handleClickOpen(patient)}>
-                    Update
-                  </Button>
-                </td>
               </tr>
             ))}
           </tbody>

@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import supabase from '../Services/Supabase';
 
-const NextOfKin = () => {
+const NextOfKin = ({ patientNum }) => {
   const [kinDetails, setKinDetails] = useState([]);
 
   useEffect(() => {
     fetchKinDetails();
-  }, []);
+  }, [patientNum]);
 
   async function fetchKinDetails() {
     try {
       const { data, error } = await supabase
         .from('next_of_kin')
-        .select('*');
+        .select('*')
+        .eq('patient_num', patientNum); // Filter by patient number
 
       if (error) {
         console.error('Error fetching next of kin details:', error);
@@ -48,6 +49,6 @@ const NextOfKin = () => {
       </tbody>
     </table>
   );
-}
+};
 
 export default NextOfKin;
