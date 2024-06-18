@@ -171,7 +171,7 @@ export const mainListItems = (
       </ListItemButton>
     </Link>
 
-    <Link to="/dashboard/ward_requisition" style={styles}>
+    <Link to="/dashboard/requisition_form" style={styles}>
       <ListItemButton sx={listItemButtonStyles}>
       <ListItemIcon>
           <DescriptionIcon /> {/* Use LocalShippingIcon for Suppliers */}
