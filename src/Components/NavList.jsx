@@ -54,6 +54,15 @@ export const mainListItems = (
       </ListItemButton>
     </Link>
 
+    <Link to="/dashboard/list_of_pa" style={styles}>
+      <ListItemButton sx={listItemButtonStyles}>
+        <ListItemIcon>
+          <BookIcon />
+        </ListItemIcon>
+        <ListItemText primary="List of Patient Appointments" />
+      </ListItemButton>
+    </Link>
+
     <Link to="/dashboard/forms" style={styles}>
       <ListItemButton sx={listItemButtonStyles}>
         <ListItemIcon>

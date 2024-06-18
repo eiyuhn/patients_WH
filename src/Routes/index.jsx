@@ -14,6 +14,7 @@ import OutPatients from '../Page/OutPatients';
 import EmploymentContract from '../Page/EmploymentContract';
 import WardRequisition from '../Page/WardRequisition';
 import NextOfKin from '../Page/NextOfKin';
+import ListOfPa from '../Page/ListOfPa';
 
 const routes = [
   {
@@ -89,6 +90,11 @@ const routes = [
 
   path: "dashboard/ward_requisition",
   element: <WardRequisition />
+},
+
+{
+  path: "dashboard/list_of_pa",
+  element: <ListOfPa />
 }
 
   ];
